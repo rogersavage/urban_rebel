@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}urbanRebel{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="slides">
+        <img src="{% static 'store/images/mexica_hero_2.webp' %}" class="slide active">
+        <img src="{% static 'store/images/lakota_hero.webp' %}" class="slide">
+        <img src="{% static 'store/images/maya_hero.webp' %}" class="slide">
+        <img src="{% static 'store/images/mexica.webp' %}" class="slide">
+        <img src="{% static 'store/images/peru_hero.webp' %}" class="slide">
+        <img src="{% static 'store/images/inca_hero.webp' %}" class="slide">
+        <img src="{% static 'store/images/mali_hangout_2.webp' %}" class="slide">
+        <img src="{% static 'store/images/burkina_hangout.webp' %}" class="slide">
+        <div class="slide-caption">
+            <p>Ethical. Modern. Sustainable.</p>
+        </div>
+    </div>
+</section>
+<main>
+    <div class="collection-header">Collections</div>
+
+    {% for collection in collections %}
+        <div class="collection-title">{{ collection.name }}</div>
+        <section class="collection">
+            {% for product in collection.products.all %}
+                <div class="card">
+                    <a href="{% url 'product_detail' id=product.id %}">
+                    <div class="card-image-container">
+                    <img src="{{ product.image.url }}" alt="{{ product.title }}">
+                    </div>
+                    <div class="card-content">
+                        <h3>{{ product.title }}</h3>
+                        <p>${{ product.price }}</p>
+                    </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </section>
+    {% endfor %}
+</main>
+{% endblock %}

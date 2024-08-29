@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product List</title>
+    <link rel="stylesheet" href="{% static 'store/css/styles.css' %}">
+    </head>
+    <body>
+        <h1>Our Products</h1>
+        <div class="products">
+            {% for product in products %}
+            <div class="product">
+                <div class="product-view"><img src="{{ product.image.url }}" alt="{{ product.title }}"></div>
+                <h2>{{ product.title }}</h2>
+                <p>{{ product.description }}</p>
+                <p>${{ product.price }}</p>
+            </div>
+            {% endfor %}
+        </div>
+
+    </body>

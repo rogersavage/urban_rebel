@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}urbanRebel{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="slides">
+        <img src="{% static 'store/images/mexica_hero_2.webp' %}" class="slide active">
+        <img src="{% static 'store/images/lakota_hero.webp' %}" class="slide">
+        <img src="{% static 'store/images/maya_hero.webp' %}" class="slide">
+        <img src="{% static 'store/images/mexica.webp' %}" class="slide">
+        <img src="{% static 'store/images/peru_hero.webp' %}" class="slide">
+        <img src="{% static 'store/images/inca_hero.webp' %}" class="slide">
+        <img src="{% static 'store/images/mali_hangout_2.webp' %}" class="slide">
+        <img src="{% static 'store/images/burkina_hangout.webp' %}" class="slide">
+        <div class="slide-caption">
+            <p>Ethical. Modern. Sustainable.</p>
+        </div>
+    </div>
+</section>
+<main>
+    <div class="collection-header">Collections</div>
+
+    {% for partialCollection in partialCollections %}
+        <div class="collection-title">
+            <a href="{% url 'collection_view' partialCollection.collection.id %}">{{ partialCollection.collection.name }}</a></div>
+        <section class="collection">
+            {% for product in partialCollection.products %}
+                <div class="card">
+                    <a href="{% url 'product_detail' id=product.id %}">
+                    <div class="card-image-container">
+                    <img src="{{ product.image.url }}" alt="{{ product.title }}">
+                    </div>
+                    <div class="card-content">
+                        <h3>{{ product.title }}</h3>
+                        {% if product.discount > 0 %}
+                        <del>${{ product.price }}</del> <div class="discount-badge">{{ product.discount }}% off</div>
+                            <p>${{ product.discounted_price }}</p>
+                        {% endif %}
+                        {% if product.discount == 0 %}
+                            <p>${{ product.price }}</p>
+                        {% endif %}
+                    </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </section>
+    {% endfor %}
+</main>
+{% endblock %}

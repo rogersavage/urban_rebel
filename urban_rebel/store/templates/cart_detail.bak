@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="shopping-cart-detail__container">
+<h1>Shopping Cart</h1>
+
+{% if cart %}
+    <div class="cart-grid">
+        <div class="cart-grid-header">
+            <div>Name</div>
+            <div>Price</div>
+            <div>#</div>
+            <div>Total</div>
+            <div></div>
+        </div>
+
+        {% for product_id, item in cart.items %}
+            <div class="cart-grid-item">
+                <div><a href="{% url 'product_detail' product_id %}">{{ item.title }}</a></div>
+                <div>${{ item.discounted_price }}</div>
+                <div>{{ item.quantity }}</div>
+                <div>${{ item.total_price }}</div>
+                <div>
+                    <a href="{% url 'remove_from_cart' product_id %}" class="btn"><i class="fas fa-times"></i></a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <p>Total: ${{ total_price }}</p>
+    <a class="btn" href="#">Proceed to Checkout</a><br>
+
+{% else %}
+    <p>Your cart is empty.</p>
+{% endif %}
+
+<a class="btn" href="/">Home</a>
+    </div>
+{% endblock %}

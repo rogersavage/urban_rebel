@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}Product Detail{% endblock %}
+
+{% block content %}
+<div class="product-detail__container">
+    <div class="product-image">
+        <img src="{{ product.image.url }}" alt="{{ product.title }}">
+    </div>
+    <div class="product-detail__info">
+        <h1>{{ product.title }}</h1>
+        {% if product.discount > 0 %}
+        <del>${{ product.price }}</del> <div class="discount-badge">{{ product.discount }}% off</div>
+            <p>${{ product.discounted_price }}</p>
+        {% endif %}
+        {% if product.discount == 0 %}
+            <p>${{ product.price }}</p>
+        {% endif %}
+        <p>{{ product.description }}</p>
+        <p>Product ID: {{ product.id }}</p>
+        <form method="post" action="{% url 'add_to_cart' product.id %}">
+            {% csrf_token %}
+            <label for="quantity">Quantity:</label>
+            <select name="quantity" id="quantity" class="quantity-select">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>
+            <button type="submit" class="btn add-to-cart-btn">Add to Cart</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

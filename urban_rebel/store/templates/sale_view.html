@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="collection-header">On Sale</div>
+
+<div class="collection">
+    <section class="collection">
+        {% for product in products %}
+            <div class="card">
+                <a href="{% url 'product_detail' id=product.id %}">
+                <div class="card-image-container">
+                <img src="{{ product.image.url }}" alt="{{ product.title }}">
+                </div>
+                <div class="card-content">
+                    <h3>{{ product.title }}</h3>
+                    {% if product.discount > 0 %}
+                    <del>${{ product.price }}</del> <div class="discount-badge">{{ product.discount }}% off</div>
+                        <p>${{ product.discounted_price }}</p>
+                    {% endif %}
+                    {% if product.discount == 0 %}
+                        <p>${{ product.price }}</p>
+                    {% endif %}
+                </div>
+                </a>
+            </div>
+        {% endfor %}
+    </section>
+</div>
+{% endblock %}
