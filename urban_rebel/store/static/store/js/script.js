@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
   hamburger.addEventListener("click", function () {
     dropdown.classList.toggle("show");
     console.log(site_container_rect.x);
-    dropdown.style.left = `${site_container_rect.x}px`;
+    // dropdown.style.left = `${site_container_rect.x}px`;
   });
 });
 
