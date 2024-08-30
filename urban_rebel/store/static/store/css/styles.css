@@ -244,7 +244,7 @@ a.cart-icon {
 .collection {
     display: flex;
     flex-wrap:wrap;
-    justify-content:space-evenly;
+    justify-content: left;
     padding: 4px;
     background-color: var(--bg-light);
     padding-top: 0.5rem;
@@ -260,6 +260,15 @@ a.cart-icon {
     text-align: center;
     opacity: 0;
     animation: fadeIn 1s ease-out forwards;
+}
+
+.sale-header {
+    color: var(--bg-dark);
+    background: linear-gradient(var(--bg-dark) 0%, var(--bg-light) 5%);
+    text-align: center;
+    opacity: 0;
+    animation: fadeIn 1s ease-out forwards;
+    padding-top: 0.5rem;
 }
 
 @keyframes fadeIn {
@@ -300,7 +309,7 @@ a.cart-icon {
 
 .card {
     width: 50%;
-    box-shadow: 0 0 5px 1px var(--bg-dark);
+    box-shadow: 0 0 3px 1px var(--bg-dark);
     overflow: hidden;
     box-sizing:border-box;
     margin-bottom: 6px;
@@ -308,6 +317,7 @@ a.cart-icon {
     transform: translateX(-100%);
     opacity: 0;
     transition: transform 0.3s ease-out, opacity 0.5s ease-out, box-shadow 0.2s ease-out;
+    margin-left: 6px;
 }
 
 @media only screen and (min-width: 480px) {
@@ -317,7 +327,7 @@ a.cart-icon {
 }
 
 .card:hover {
-    box-shadow: 0 0 10px 1px var(--secondary-color);
+    box-shadow: 0 0 2px 1px var(--secondary-color);
     z-index: 1;
 }
 
@@ -329,7 +339,7 @@ a.cart-icon {
 }
 
 .card img:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 .card-image-container {
@@ -425,6 +435,14 @@ a.cart-icon {
 
 .site-nav ul a:hover {
     color: var(--accent-color);
+}
+
+@media (max-width: 640px) {
+    .site-nav ul a {
+        font-size: 18px;
+        padding-top: 2px;
+        padding-bottom: 2px;
+    }
 }
 
 .dropdown-close {
@@ -612,7 +630,7 @@ a.btn-remove:active {
     background-color: var(--secondary-color);
 }
 
-.add-tocart-btn:focus {
+.add-to-cart-btn:focus {
     outline: none;
     box-shadow: 0 0 3px 2px rgba(0, 123, 255, 0.5);
 }
