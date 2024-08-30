@@ -156,6 +156,7 @@ a.cart-icon {
     height: 100%;
     background: linear-gradient(176deg, rgba(0, 0, 0, 0.0) 83%, var(--bg-dark) 84%);
     z-index: 2;
+    animation: fadeIn 1s forwards;
 }
 
 
@@ -166,6 +167,7 @@ a.cart-icon {
     padding: 4px;
     z-index: 2;
     text-align: right;
+    animation: fadeIn 1.3s forwards;
 }
 
 @media (max-width: 640px) {
@@ -438,8 +440,12 @@ a.cart-icon {
 }
 
 @media (max-width: 640px) {
+    .site-nav h3 {
+        font-size: 28px;
+    }
+
     .site-nav ul a {
-        font-size: 18px;
+        font-size: 24px;
         padding-top: 2px;
         padding-bottom: 2px;
     }
